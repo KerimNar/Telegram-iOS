@@ -6,7 +6,7 @@ import MtProtoKit
 
 import SyncCore
 
-private func messageFilterForTagMask(_ tagMask: MessageTags) -> Api.MessagesFilter? {
+func messageFilterForTagMask(_ tagMask: MessageTags) -> Api.MessagesFilter? {
     if tagMask == .photoOrVideo {
         return Api.MessagesFilter.inputMessagesFilterPhotoVideo
     } else if tagMask == .file {
@@ -479,15 +479,11 @@ func fetchChatListHole(postbox: Postbox, network: Network, accountPeerId: PeerId
                 }
             }
             
-            for (peerId, chatState) in fetchedChats.chatStates {
-                if let chatState = chatState as? ChannelState {
-                    if let current = transaction.getPeerChatState(peerId) as? ChannelState {
-                        transaction.setPeerChatState(peerId, state: current.withUpdatedPts(chatState.pts))
-                    } else {
-                        transaction.setPeerChatState(peerId, state: chatState)
-                    }
+            for (peerId, pts) in fetchedChats.channelStates {
+                if let current = transaction.getPeerChatState(peerId) as? ChannelState {
+                    transaction.setPeerChatState(peerId, state: current.withUpdatedPts(pts))
                 } else {
-                    transaction.setPeerChatState(peerId, state: chatState)
+                    transaction.setPeerChatState(peerId, state: ChannelState(pts: pts, invalidatedPts: nil, synchronizedUntilMessageId: nil))
                 }
             }
             
