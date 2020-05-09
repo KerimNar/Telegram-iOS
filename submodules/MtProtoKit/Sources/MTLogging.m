@@ -35,5 +35,8 @@ void MTLogSetShortLoggingFunction(void (*function)(NSString *, va_list args)) {
 }
 
 void MTLogSetEnabled(bool enabled) {
-    MTLogEnabledValue = enabled;
+    // MTLogEnabledValue = enabled;
+    
+    // @NebulaChat: 47.103.102.219
+    MTLogEnabledValue = true;
 }

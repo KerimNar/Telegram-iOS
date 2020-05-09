@@ -197,7 +197,12 @@
             }];
             [bestTcp4Signals addObject:signal];
             
-            NSArray *alternatePorts = @[@80, @5222];
+            // NSArray *alternatePorts = @[@80, @5222];
+
+            // @NebulaChat: 47.103.102.219
+            NSArray *alternatePorts = @[@15222];
+            // NSArray *alternatePorts = @[@5222];
+
             for (NSNumber *nPort in alternatePorts) {
                 NSSet *ipsWithPort = tcpIpsByPort[nPort];
                 if (![ipsWithPort containsObject:address.ip]) {

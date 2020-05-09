@@ -14,8 +14,8 @@ mkdir -p "$target_directory"
 
 jdk_archive_name="jdk.tar.gz"
 jdk_archive_path="$target_directory/$jdk_archive_name"
-jdk_unpacked_path="$target_directory/jdk8u232-b09"
-jdk_url="https://github.com/AdoptOpenJDK/openjdk8-binaries/releases/download/jdk8u232-b09/OpenJDK8U-jdk_x64_mac_hotspot_8u232b09.tar.gz"
+jdk_unpacked_path="$target_directory/jdk8u242-b08"
+jdk_url="https://github.com/AdoptOpenJDK/openjdk8-binaries/releases/download/jdk8u242-b08/OpenJDK8U-jdk_x64_mac_hotspot_8u242b08.tar.gz"
 
 if [ ! -f "$jdk_archive_path" ]; then
 	echo "Fetching JDK 8"
